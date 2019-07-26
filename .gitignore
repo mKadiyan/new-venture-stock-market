@@ -2,3 +2,6 @@
 .gradle/
 .idea/
 out/
+*iml
+*/gradle/wrapper/
+
