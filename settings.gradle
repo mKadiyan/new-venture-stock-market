@@ -1,0 +1,5 @@
+rootProject.name = 'new-venture-stock-market'
+
+include 'discovery-service'
+include 'book'
+include 'gateway'
