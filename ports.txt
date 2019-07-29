@@ -1,0 +1,11 @@
+'discovery-service' : 8762
+'gateway' : 9000
+
+'buy-sell' : 8081
+'company' : 8082
+'company-portfolio' : 8083
+'stock' : 8084
+'stock-pricing' : 8085
+'user' : 8086
+'user-account' : 8087
+'user-portfolio' : 8088

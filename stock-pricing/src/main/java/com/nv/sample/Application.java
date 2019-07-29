@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class BookApplication {
+public class Application {
 
   @RequestMapping(value = "/available")
   public String available() {
@@ -20,6 +20,6 @@ public class BookApplication {
   }
 
   public static void main(String[] args) {
-    SpringApplication.run(BookApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 }

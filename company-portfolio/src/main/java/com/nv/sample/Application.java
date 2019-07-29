@@ -7,19 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @SpringBootApplication
-public class BookApplication {
+public class Application {
 
-  @RequestMapping(value = "/available")
+  @RequestMapping(value = "/welcome")
   public String available() {
-    return "Spring in Action";
+    return "Welcome to company portfolia service.";
   }
 
-  @RequestMapping(value = "/checked-out")
-  public String checkedOut() {
-    return "Spring Boot in Action";
-  }
 
   public static void main(String[] args) {
-    SpringApplication.run(BookApplication.class, args);
+    SpringApplication.run(Application.class, args);
   }
 }

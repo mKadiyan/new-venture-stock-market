@@ -1,6 +1,5 @@
 rootProject.name = 'new-venture-stock-market'
 
-include 'book'
 include 'buy-sell'
 include 'company'
 include 'company-portfolio'
