@@ -1,4 +1,4 @@
-package com.nv.sample;
+package com.nv.account;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
