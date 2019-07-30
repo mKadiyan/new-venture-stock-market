@@ -2,8 +2,6 @@ package com.nv.company.dtos;
 
 import lombok.Data;
 
-import java.sql.Date;
-
 @Data
 public class CreateCompanyDto {
     private int id;

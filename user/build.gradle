@@ -1,7 +1,6 @@
 plugins {
     id 'org.springframework.boot' version '2.1.6.RELEASE'
     id 'java'
-    // flyway plugin for database migrations
     id "org.flywaydb.flyway" version "5.0.7"
 }
 
@@ -25,13 +24,33 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    integrationTest {
+        java {
+            srcDir 'src/integrationTest/java'
+        }
+        resources {
+            srcDir 'src/integrationTest/resources'
+        }
+        compileClasspath += sourceSets.main.runtimeClasspath
+        compileClasspath += sourceSets.test.runtimeClasspath
+    }
+}
+
+task integrationTest(type: Test) {
+    testClassesDirs = sourceSets.integrationTest.output.classesDirs
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    systemProperties System.properties
+}
+
+
 dependencies {
     implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.springframework.boot:spring-boot-starter'
-    compileOnly 'org.projectlombok:lombok'
-    compile 'org.postgresql:postgresql'
+    compile 'org.projectlombok:lombok'
+    compile 'com.h2database:h2'
     compile 'org.flywaydb:flyway-core'
     compile 'com.github.jmnarloch:modelmapper-spring-boot-starter:1.1.0'
     compile 'org.modelmapper:modelmapper'

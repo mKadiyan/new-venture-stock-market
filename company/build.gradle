@@ -16,21 +16,37 @@ configurations {
     }
 }
 
+sourceSets {
+    integrationTest {
+        java {
+            srcDir 'src/integrationTest/java'
+        }
+        resources {
+            srcDir 'src/integrationTest/resources'
+        }
+        compileClasspath += sourceSets.main.runtimeClasspath
+        compileClasspath += sourceSets.test.runtimeClasspath
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-actuator')
-    implementation "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jdk8"
     compile 'org.springframework.boot:spring-boot-starter-web'
     compile 'org.springframework.boot:spring-boot-starter-data-jpa'
     compile 'org.springframework.boot:spring-boot-starter'
     compileOnly 'org.projectlombok:lombok'
-    compile 'org.postgresql:postgresql'
+    compile 'com.h2database:h2'
     compile 'org.flywaydb:flyway-core'
     compile 'com.github.jmnarloch:modelmapper-spring-boot-starter:1.1.0'
     compile 'org.modelmapper:modelmapper'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    integrationTestCompile sourceSets.main.output
+    integrationTestCompile configurations.testCompile
+    integrationTestCompile sourceSets.test.output
 }
