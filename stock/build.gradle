@@ -1,6 +1,7 @@
 buildscript {
 	ext {
 		springBootVersion = '2.1.6.RELEASE'
+		springCloudSleuthVersion = '2.1.2.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -30,10 +31,13 @@ repositories {
 dependencyManagement {
 	imports {
 		mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.SR2'
+		mavenBom "org.springframework.cloud:spring-cloud-sleuth:${springCloudSleuthVersion}"
 	}
 }
 
 dependencies {
+	compile "org.springframework.cloud:spring-cloud-starter-zipkin"
+	compile('org.springframework.cloud:spring-cloud-starter-sleuth')
 	compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
